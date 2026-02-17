@@ -59,7 +59,7 @@ export default function RegisterForm({ onRegister, onSwitchToLogin }) {
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-slate-800 border border-slate-700 mb-4">
             <span className="text-emerald-400 font-mono text-2xl font-bold">&lt;/&gt;</span>
           </div>
-          <h1 className="text-2xl font-bold text-white">Claude Prompt Builder</h1>
+          <h1 className="text-2xl font-bold text-white">Prompt Builder</h1>
           <p className="text-slate-400 mt-2">Create your account</p>
         </div>
 

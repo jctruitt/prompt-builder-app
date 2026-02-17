@@ -1,4 +1,4 @@
-# Claude Prompt Builder
+# Prompt Builder
 
 An interactive web application for building well-structured XML prompts for AI models like Claude, ChatGPT, and others. Features user accounts with encrypted API key storage, per-user prompt management, and direct Claude API/CLI integration.
 
