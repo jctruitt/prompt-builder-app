@@ -360,7 +360,7 @@ function App() {
               <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-slate-800 border border-slate-700">
                 <span className="text-emerald-400 font-mono text-lg font-bold">&lt;/&gt;</span>
               </div>
-              <h1 className="text-2xl font-bold text-white">Claude Prompt Builder</h1>
+              <h1 className="text-2xl font-bold text-white">Prompt Builder</h1>
             </div>
             <div className="flex items-center gap-3">
               <button
@@ -989,7 +989,7 @@ function App() {
 
         {/* Footer */}
         <footer className="mt-12 pt-6 border-t border-slate-800 text-center text-slate-500 text-sm">
-          <p>Claude Prompt Builder • Generate better prompts, get better results</p>
+          <p>Prompt Builder • Generate better prompts, get better results</p>
         </footer>
       </div>
     </div>

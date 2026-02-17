@@ -2,7 +2,7 @@
   "name": "claude-prompt-builder",
   "private": true,
   "version": "1.0.0",
-  "description": "Claude Prompt Builder - Interactive web app for crafting well-structured AI prompts",
+  "description": "Prompt Builder - Interactive web app for crafting well-structured AI prompts",
   "type": "module",
   "engines": {
     "node": ">=18.0.0"

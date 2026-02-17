@@ -1,8 +1,8 @@
-# Claude Prompt Builder
+# Prompt Builder
 
 ## What Is This?
 
-Claude Prompt Builder is an interactive web application that helps you craft well-structured prompts for AI models like ChatGPT, Claude, and others. Instead of writing prompts from scratch and guessing at the right format, you fill in a guided form — task, context, audience, tone, examples, constraints — and the app generates clean XML-formatted output ready to paste into any AI chat interface.
+Prompt Builder is an interactive web application that helps you craft well-structured prompts for AI models like ChatGPT, Claude, and others. Instead of writing prompts from scratch and guessing at the right format, you fill in a guided form — task, context, audience, tone, examples, constraints — and the app generates clean XML-formatted output ready to paste into any AI chat interface.
 
 ## Why Was It Created?
 
