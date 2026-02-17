@@ -5,6 +5,7 @@ import UserMenu from './components/UserMenu'
 import ProfilePage from './components/ProfilePage'
 import AccountSettings from './components/AccountSettings'
 import CommunityPage from './components/CommunityPage'
+import { events } from './analytics'
 
 function App() {
   // Auth state
@@ -62,6 +63,12 @@ function App() {
       .finally(() => setAuthChecked(true))
   }, [])
 
+  // Track page views on navigation
+  useEffect(() => {
+    const pageNames = { builder: 'Builder', login: 'Login', register: 'Register', profile: 'Profile', settings: 'Account Settings', community: 'Community' }
+    events.pageViewed(pageNames[view] || view)
+  }, [view])
+
   // Load saved prompts when authenticated
   useEffect(() => {
     if (!currentUser) return
@@ -76,12 +83,15 @@ function App() {
   const handleLogin = (user) => {
     setCurrentUser(user)
     setView('builder')
+    events.login()
+    events.pageViewed('Builder')
   }
 
   const handleLogout = () => {
     setCurrentUser(null)
     setSavedPrompts([])
     setView('login')
+    events.logout()
   }
 
   const handleChange = (field, value) => {
@@ -188,6 +198,7 @@ function App() {
     navigator.clipboard.writeText(generateXML())
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
+    events.promptCopied()
   }
 
   const saveDraft = () => {
@@ -212,6 +223,7 @@ function App() {
       const newPrompt = await res.json()
       if (res.ok) {
         setSavedPrompts(prev => [newPrompt, ...prev])
+        events.promptSaved(savePublic)
       }
     } catch {}
     setSaveDescription('')
@@ -229,6 +241,7 @@ function App() {
       })
       if (res.ok) {
         setSavedPrompts(prev => prev.map(p => p.id === id ? { ...p, isPublic: newValue } : p))
+        events.visibilityToggled(newValue)
       }
     } catch {}
   }
@@ -241,6 +254,7 @@ function App() {
   const deletePrompt = async (id) => {
     setSavedPrompts(prev => prev.filter(p => p.id !== id))
     try { await fetch(`/api/prompts/${id}`, { method: 'DELETE' }) } catch {}
+    events.promptDeleted()
   }
 
   // Send prompt to Claude API (server decrypts key)
@@ -260,6 +274,7 @@ function App() {
       if (!res.ok) throw new Error(data.error || 'API request failed')
       const text = data.content?.map(c => c.text).join('\n') || 'No response'
       setClaudeResponse(text)
+      events.promptSentToApi('claude')
     } catch (err) {
       setClaudeError(err.message)
     } finally {
@@ -283,6 +298,7 @@ function App() {
       const data = await res.json()
       if (!res.ok) throw new Error(data.error || data.hint || 'CLI request failed')
       setClaudeResponse(data.response)
+      events.promptSentToCli()
     } catch (err) {
       setClaudeError(err.message)
     } finally {

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { events } from '../analytics'
 
 export default function AccountSettings({ user, onUpdate, onNavigate }) {
   // Password change
@@ -85,6 +86,7 @@ export default function AccountSettings({ user, onUpdate, onNavigate }) {
         return
       }
       setKeyMsg(`Key "${keyName}" saved successfully`)
+      events.apiKeySaved(keyName)
       setNewKeyValue('')
       setMcpKeyName('')
       setMcpKeyValue('')

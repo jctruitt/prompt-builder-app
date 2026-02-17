@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { events } from '../analytics'
 
 export default function CommunityPage({ onNavigate, onUsePrompt }) {
   const [prompts, setPrompts] = useState([])
@@ -27,6 +28,7 @@ export default function CommunityPage({ onNavigate, onUsePrompt }) {
   const handleUse = (prompt) => {
     onUsePrompt(prompt.formData)
     onNavigate('builder')
+    events.communityPromptUsed()
   }
 
   const handleCopyXml = (prompt) => {
@@ -41,6 +43,7 @@ export default function CommunityPage({ onNavigate, onUsePrompt }) {
     navigator.clipboard.writeText(xml)
     setCopiedId(prompt.id)
     setTimeout(() => setCopiedId(null), 2000)
+    events.communityPromptCopied()
   }
 
   return (

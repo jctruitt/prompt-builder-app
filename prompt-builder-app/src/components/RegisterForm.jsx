@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { events } from '../analytics'
 
 export default function RegisterForm({ onRegister, onSwitchToLogin }) {
   const [form, setForm] = useState({
@@ -44,6 +45,7 @@ export default function RegisterForm({ onRegister, onSwitchToLogin }) {
         setError(data.error || 'Registration failed')
         return
       }
+      events.register()
       onRegister(data)
     } catch {
       setError('Connection error. Is the server running?')
