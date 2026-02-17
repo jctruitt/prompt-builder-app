@@ -1,8 +1,8 @@
 {
-  "name": "ai-prompt-builder",
+  "name": "claude-prompt-builder",
   "private": true,
   "version": "1.0.0",
-  "description": "Interactive form for building well-structured AI prompts in XML format",
+  "description": "Claude Prompt Builder - Interactive web app for crafting well-structured AI prompts",
   "type": "module",
   "engines": {
     "node": ">=18.0.0"

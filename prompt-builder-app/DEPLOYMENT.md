@@ -1,6 +1,6 @@
-# Deploying AI Prompt Builder to Railway
+# Deploying Claude Prompt Builder to Railway
 
-This document covers the full deployment process for the AI Prompt Builder app on [Railway](https://railway.com). It notes which steps were done automatically by the AI and which steps require manual user action.
+This document covers the full deployment process for the Claude Prompt Builder app on [Railway](https://railway.com). It notes which steps were done automatically by the AI and which steps require manual user action.
 
 ---
 
